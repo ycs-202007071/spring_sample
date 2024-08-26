@@ -16,4 +16,11 @@ public interface StudentService {
 	HashMap<String, Object> searchStu(HashMap<String, Object> map);
 
 	List<Emp> searchEmp();
+	
+	HashMap<String, Object> searchSubject();
+	
+	
+	
+	
+	
 }

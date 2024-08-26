@@ -41,6 +41,12 @@ public class StudentController {
         return "/emp-list";
     }
 	
+	@RequestMapping("/subject.do") 
+    public String subject(Model model) throws Exception{
+
+        return "/subject-list";
+    }
+	
 	
 	@RequestMapping(value = "/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -83,6 +89,16 @@ public class StudentController {
 		
 		resultMap.put("emp", emp);
 		resultMap.put("result", "success");
+		
+		return new Gson().toJson(resultMap); // json 형태로 바꿔주는 애
+	}
+	
+	@RequestMapping(value = "/sub-list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String sub_list(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		
+		resultMap = studentService.searchSubject();
 		
 		return new Gson().toJson(resultMap); // json 형태로 바꿔주는 애
 	}

@@ -31,5 +31,10 @@
 		
 	</select>
 	
+	<select id="selectSubject" parameterType="hashmap" resultType="com.example.test1.model.Student">
+		SELECT * FROM SUBJECT
+		
+	</select>
+	
 	
 </mapper>

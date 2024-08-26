@@ -10,12 +10,14 @@ import com.example.test1.model.Student;
 
 @Mapper
 public interface StudentMapper {
-	List<Student> selectStudentList(HashMap<String, Object> map);
+	List<Student> selectStudentList();
 	
 	Student qwer();
 
 	Student selectStu(HashMap<String, Object> map);
 
 	List<Emp> selectEmp();
+	
+	List<Student> selectSubject(); 
 	
 }

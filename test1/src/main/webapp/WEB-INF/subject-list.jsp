@@ -11,7 +11,8 @@
 </style>
 <body>
 	<div id="app">
-		{{list}}
+		{{subList}},
+		{{stuList}}
 	</div>
 </body>
 </html>
@@ -20,7 +21,9 @@
         data() {
             return {
                 name : "홍길동",
-				list : []
+				list : [],
+				subList : [],
+				stuList : []
             };
         },
         methods: {
@@ -28,13 +31,14 @@
 				var self = this;
 				var nparmap = {};
 				$.ajax({
-					url:"empList.dox",
+					url:"sub-list.dox",
 					dataType:"json",	
 					type : "POST", 
 					data : nparmap,
 					success : function(data) { 
 						console.log(data);
-						self.list = data.emp;
+						self.subList = data.subList;
+						self.stuList = data.stuList;
 					}
 				});
             }
