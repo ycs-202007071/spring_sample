@@ -34,7 +34,7 @@
 					data : nparmap,
 					success : function(data) { 
 						console.log(data);
-						self.list = data.emp;
+						self.list = data.list;
 					}
 				});
             }

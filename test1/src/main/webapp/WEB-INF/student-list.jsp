@@ -12,9 +12,8 @@
 <body>
 	<div id="app">
 		<input type="text" placeholder="학번" v-model="stuNo">
-		<button @click="fnSearch()">검색</button>
-		<hr>
-		<br>
+		<button @click="fnSearch">검색</button>
+		<br><hr>
 		{{info}}
 	</div>
 </body>
@@ -26,7 +25,6 @@
                 name : "홍길동",
 				info : {},
 				stuNo : ""
-				
             };
         },
         methods: {
@@ -34,13 +32,13 @@
 				var self = this;
 				var nparmap = {};
 				$.ajax({
-					url:"ok.dox", // 여기 주소는 컨트롤러에 존재 해야한다. DB와 상호작용용
+					url:"ok.dox",
 					dataType:"json",	
 					type : "POST", 
 					data : nparmap,
 					success : function(data) { 
 						console.log(data);
-						self.list = data.list;
+						// self.list = data.list;
 					}
 				});
             },
@@ -48,7 +46,7 @@
 				var self = this;
 				var nparmap = {stuNo : self.stuNo};
 				$.ajax({
-					url:"search.dox", // 여기 주소는 컨트롤러에 존재 해야한다. DB와 상호작용용
+					url:"search.dox",
 					dataType:"json",	
 					type : "POST", 
 					data : nparmap,
@@ -56,9 +54,9 @@
 						console.log(data);
 						alert(data.message);
 						self.info = data.stu;
+					}
+				});
 			}
-			});
-		 }
         },
         mounted() {
             var self = this;

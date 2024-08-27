@@ -10,11 +10,12 @@ public class Board {
 	private String userId;
 	private int hit;
 	private String category;
-	private String ravorite;
+	private String favorite;
 	private String tag1;
 	private String tag2;
 	private String noticeYn;
 	private String cdateTime;
 	private String udateTime;
 	
+	private String userName;
 }

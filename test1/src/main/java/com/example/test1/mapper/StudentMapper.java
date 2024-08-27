@@ -13,11 +13,11 @@ public interface StudentMapper {
 	List<Student> selectStudentList();
 	
 	Student qwer();
-
+	
 	Student selectStu(HashMap<String, Object> map);
-
+	
 	List<Emp> selectEmp();
 	
-	List<Student> selectSubject(); 
+	List<Student> selectSubject();
 	
 }

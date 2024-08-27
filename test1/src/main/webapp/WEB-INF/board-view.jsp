@@ -11,8 +11,8 @@
 </style>
 <body>
 	<div id="app">
-		{{subList}} 
-		{{stuList}}
+		제목 : {{info.title}}<br>
+		내용 : {{info.contents}}
 	</div>
 </body>
 </html>
@@ -20,31 +20,29 @@
     const app = Vue.createApp({
         data() {
             return {
-                name : "홍길동",
-				subList : [],
-				stuList : []
+				boardNo : '${boardNo}',
+				info : {}
             };
         },
         methods: {
-            fnGetList(){
+			fnGetInfo(){
 				var self = this;
-				var nparmap = {};
+				var nparmap = {boardNo : self.boardNo};
 				$.ajax({
-					url:"sub-list.dox",
+					url:"board-view.dox",
 					dataType:"json",	
 					type : "POST", 
 					data : nparmap,
 					success : function(data) { 
 						console.log(data);
-						self.subList = data.subList;
-						self.stuList = data.stuList;
+						self.info = data.info;
 					}
 				});
             }
         },
         mounted() {
-            var self = this;
-			self.fnGetList();
+			var self = this;
+			self.fnGetInfo();
         }
     });
     app.mount('#app');

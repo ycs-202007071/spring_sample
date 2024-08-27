@@ -17,24 +17,25 @@
 	</select>
 	
 	<select id="qwer" parameterType="hashmap" resultType="com.example.test1.model.Student">
-		SELECT * FROM STUDENT WHERE STU_NO = '20153075'
-		
+		SELECT * 
+		FROM STUDENT 
+		WHERE STU_NO = '20153075'
 	</select>
 	
 	<select id="selectStu" parameterType="hashmap" resultType="com.example.test1.model.Student">
-		SELECT * FROM STUDENT WHERE STU_NO = ${stuNo}
-		
+		SELECT * 
+		FROM STUDENT 
+		WHERE STU_NO = ${stuNo}
 	</select>
 	
 	<select id="selectEmp" parameterType="hashmap" resultType="com.example.test1.model.Emp">
-		SELECT * FROM EMP
-		
+		SELECT *
+		FROM EMP
 	</select>
 	
 	<select id="selectSubject" parameterType="hashmap" resultType="com.example.test1.model.Student">
-		SELECT * FROM SUBJECT
-		
+		SELECT * 
+		FROM SUBJECT 
 	</select>
-	
 	
 </mapper>

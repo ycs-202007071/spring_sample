@@ -8,7 +8,7 @@ public class Emp {
 	private String eName;
 	private String job;
 	private String mgr;
-	private String hireDate;
+	private String hiredate;
 	private String sal;
 	private String comm;
 	private String deptNo;

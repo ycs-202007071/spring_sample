@@ -13,11 +13,8 @@ import com.example.test1.model.Student;
 @Service
 public class StudentServiceImpl implements StudentService{
 
-	@Autowired // 사용하지 않을 경우 알아서 소멸해주고 데이터가 많더라도 알아서 처리해주는 애
+	@Autowired
 	StudentMapper studentMapper;
-
-	@Autowired // 사용하지 않을 경우 알아서 소멸해주고 데이터가 많더라도 알아서 처리해주는 애
-	StudentMapper empMapper;
 	
 	@Override
 	public List<Student> searchStudentList(HashMap<String, Object> map) {
@@ -34,43 +31,45 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public HashMap<String, Object> searchStu(HashMap<String, Object> map) {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap
+			= new HashMap<String, Object>();
 		try {
+			// db호출 데이터, 
+			// 결과(성공,실패), 메시지(성공메시지, 오류메시지)
 			Student s = studentMapper.selectStu(map);
 			resultMap.put("stu", s);
 			resultMap.put("result", "success");
-			String msg = s !=null ? "조회했습니다." : "학번을 확인해주세요.";
+			String msg 
+				= s != null ? "조회했습니다!" : "학번을 확인해주세요.";
 			resultMap.put("message", msg);
 		} catch (Exception e) {
+			// TODO: handle exception
 			resultMap.put("result", "fail");
 			resultMap.put("message", "db조회 오류");
-			
 		}
-		
 		return resultMap;
-		
-		
 	}
-	
 
 	@Override
 	public List<Emp> searchEmp() {
-		List<Emp> m = empMapper.selectEmp();
-		return m;
+		// TODO Auto-generated method stub
+		return studentMapper.selectEmp();
 	}
 
 	@Override
 	public HashMap<String, Object> searchSubject() {
-		HashMap<String, Object> resultMap = new HashMap<>();
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap 
+			= new HashMap<String, Object>();
 		List<Student> subject = studentMapper.selectSubject();
-		List<Student> student = studentMapper.selectStudentList();	
+		List<Student> student = studentMapper.selectStudentList();
+		
 		resultMap.put("subList", subject);
 		resultMap.put("stuList", student);
 		
 		return resultMap;
+		
+		
 	}
-
-	
-	
-
 }
