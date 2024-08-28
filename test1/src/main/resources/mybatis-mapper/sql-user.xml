@@ -4,12 +4,37 @@
 
 <mapper namespace="com.example.test1.mapper.UserMapper">
 	<select id="selectUserInfo" parameterType="hashmap" resultType="com.example.test1.model.User">
-	SELECT *
-	FROM TBL_USER
-	WHERE USERID = #{userId}
+		SELECT *
+		FROM TBL_USER
+		WHERE USERID = #{userId}
 	</select>
-	<insert id="insertUser" parameterType="hashmap" resultType="com.example.test1.model.User">
+	
+	
+	<insert id="insertUser" parameterType="hashmap">
 		INSERT INTO TBL_USER(USERID, PWD, USERNAME, EMAIL, PHONE, GENDER) 
 		VALUES(#{userId}, #{qwd}, #{userName}, #{email},#{phone},#{gender})
 	</insert>
+	
+	<select id="selectUserList" parameterType="hashmap" resultType="com.example.test1.model.User">
+		SELECT *
+		FROM TBL_USER
+		WHERE USERID LIKE '%' || #{keyword} ||'%'
+	</select>
+	
+	<select id="selectBoardListUser" parameterType="hashmap" resultType="com.example.test1.model.Board">
+		SELECT *
+		FROM TBL_BOARD
+	</select>
+	
+	<delete id ="deleteUserId" parameterType="hashmap" >
+		DELETE FROM TBL_USER
+		WHERE USERID = #{userId}
+	</delete>
+	
+	<select id="searchUser" parameterType="hashmap" resultType="com.example.test1.model.User">
+		SELECT *
+		FROM TBL_USER
+		WHERE USERID = #{userId}
+	</select>
+	
 </mapper>
