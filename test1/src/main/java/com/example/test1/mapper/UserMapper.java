@@ -10,17 +10,16 @@ import com.example.test1.model.User;
 
 @Mapper
 public interface UserMapper {
-
-	User selectUserInfo(HashMap<String, Object> map);
 	
-	void insertUser(HashMap<String, Object> map);
+	User selectUserInfo(HashMap<String, Object> map);
 	
 	List<User> selectUserList(HashMap<String, Object> map);
 	
-	List<Board> selectBoardListUser(HashMap<String, Object> map);
+	List<Board> boardList(HashMap<String, Object> map);
 	
-	void deleteUserId(HashMap<String, Object> map);
+	void deleteUser(HashMap<String, Object> map);
 	
-	User selectUser(HashMap<String, Object> map);
-
+	User userLogin(HashMap<String, Object> map);
+	
+	
 }

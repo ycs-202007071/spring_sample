@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.test1.model.Board;
+import com.example.test1.model.User;
 
 @Mapper
 public interface BoardMapper {
@@ -18,10 +19,6 @@ public interface BoardMapper {
 	void insertBoard(HashMap<String, Object> map);
 	
 	Board selectBoardInfo(HashMap<String, Object> map);
-	
-	
-	
-	
 	
 	
 }

@@ -16,11 +16,24 @@
 		padding : 5px 5px;
 		border-collapse: collapse;
 	}
+	
+	
 </style>
 <body>
 	<div id="app">
+		<ul style="margin : 20px;">
+			<li><a href="#" @click="fnCategory('')">전체</a></li>
+			<li><a href="#" @click="fnCategory('1')">공지사항</a></li>
+			<li><a href="#" @click="fnCategory('2')">자유게시판</a></li>
+			<li><a href="#" @click="fnCategory('3')">질문게시판</a></li>
+		</ul>
 		<div style="margin : 20px;"> 
-			검색 : <input placeholder="검색어" v-model="keyword">
+			<select style="margin-right : 5px;" v-model="searchOption">
+				<option value="all">:: 전체 ::</option>
+				<option value="title">제목</option>
+				<option value="name">작성자</option>
+			</select>
+			<input placeholder="검색어" v-model="keyword">
 			<button @click="fnGetList">검색</button>
 		</div> 
 		<table>
@@ -49,13 +62,19 @@
         data() {
             return {
 				list : [],
-				keyword : ""
+				keyword : "",
+				searchOption : "all",
+				category : '${session}'
             };
         },
         methods: {
             fnGetList(){
 				var self = this;
-				var nparmap = {keyword : self.keyword};
+				var nparmap = {
+					keyword : self.keyword,
+					searchOption : self.searchOption,
+					category : self.category
+				};
 				$.ajax({
 					url:"board-list.dox",
 					dataType:"json",	
@@ -84,6 +103,11 @@
 			fnView(boardNo){
 				// key : boardNo, value : 내가 누른 게시글의 boardNo(pk)
 				$.pageChange("board-view.do", {boardNo : boardNo});
+			},
+			fnCategory(category){
+				var self = this;
+				self.category = category;
+				self.fnGetList();
 			}
         },
         mounted() {

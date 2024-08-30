@@ -13,14 +13,7 @@
 	<div id="app">
 		<div>
 			아이디 : <input placeholder="아이디" v-model="userId">
-			<button @click="fnIdCheck()">중복체크</button>
-			비밀번호 : <input placeholder="비밀번호" v-model="userPw">
-			이름 : <input placeholder="이름" v-model="userName">
-			이메일 : <input placeholder="이메일" v-model="userEmail">
-			핸드폰번호 : <input placeholder="핸드폰번호" v-model="userPhone">
-			성별 : <input placeholder="성별" v-model="userGender">
-			<button @click="fnJoin()">회원가입</button>
-			
+			<button @click="fnIdCheck">중복체크</button>
 		</div>
 	</div>
 </body>
@@ -29,12 +22,7 @@
     const app = Vue.createApp({
         data() {
             return {
-				userId: "",
-				userPw: "",
-				userName : "",
-				userEmail: "",
-				userPhone : "",
-				userGender : ""
+				userId : ""
             };
         },
         methods: {
@@ -47,9 +35,12 @@
 					type : "POST", 
 					data : nparam,
 					success : function(data) { 
-						console.log(data);
+						if(data.info == undefined){
+							alert("사용 가능한 아이디!");
+						} else {
+							alert("이미 사용중인 아이디");
+						}
 					}
-						
 				});
 			}
         },

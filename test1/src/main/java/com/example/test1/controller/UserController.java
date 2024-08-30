@@ -2,6 +2,8 @@ package com.example.test1.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +17,15 @@ import com.google.gson.Gson;
 
 @Controller
 public class UserController {
+
 	@Autowired
-	UserService userSevice;
+	UserService userService;
+	
+	@RequestMapping("/sms.do") 
+    public String sms(Model model) throws Exception{
+
+        return "/sms";
+    }
 	
 	@RequestMapping("/login.do") 
     public String login(Model model) throws Exception{
@@ -36,7 +45,12 @@ public class UserController {
         return "/user-list";
     }
 	
-	
+	@RequestMapping("/user-view.do") 
+    public String userView(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+
+		request.setAttribute("userId", map.get("userId"));
+        return "/user-view";
+    }
 	
 	
 	@RequestMapping(value = "/idCheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -44,7 +58,7 @@ public class UserController {
 	public String idCheck(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap 
 			= new HashMap<String, Object>();
-		resultMap = userSevice.selectUserInfo(map);
+		resultMap = userService.searchUserInfo(map);
 		
 		return new Gson().toJson(resultMap);
 	}
@@ -54,27 +68,36 @@ public class UserController {
 	public String userList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap 
 			= new HashMap<String, Object>();
-		resultMap = userSevice.searchUserList(map);
+		resultMap = userService.searchUserList(map);
 		
 		return new Gson().toJson(resultMap);
 	}
 	
-	@RequestMapping(value = "/board-list-user.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/boardList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String boardListUser(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String boardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap 
 			= new HashMap<String, Object>();
-		resultMap = userSevice.searchBoardListUser(map);
+		resultMap = userService.boardList(map);
+		
+		return new Gson().toJson(resultMap);
+	}
+	@RequestMapping(value = "/user-remove.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String removeUser(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap 
+			= new HashMap<String, Object>();
+		resultMap = userService.removeUser(map);
 		
 		return new Gson().toJson(resultMap);
 	}
 	
-	@RequestMapping(value = "/user-delete.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/login.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String deleteUser(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap 
 			= new HashMap<String, Object>();
-		resultMap = userSevice.removeUser(map);
+		resultMap = userService.userLogin(map);
 		
 		return new Gson().toJson(resultMap);
 	}

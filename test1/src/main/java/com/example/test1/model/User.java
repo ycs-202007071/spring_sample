@@ -11,4 +11,11 @@ public class User {
 	private String phone;
 	private String gender;
 	
+	public String getUserId() {
+		return userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	
 }
