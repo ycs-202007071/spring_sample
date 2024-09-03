@@ -1,0 +1,100 @@
+*{padding:0;margin:0}
+li{list-style:none}
+a{text-decoration:none;font-size:14px}
+
+.menu {
+  overflow: hidden;
+}
+.menu > li {
+  width: 20%; /*20*5=100%*/
+  float: left;
+  text-align: center;
+  line-height: 40px;
+  background-color: #5778ff;
+}
+.menu a {
+  color: #fff;
+}
+.submenu > li {
+  line-height: 50px;
+  background-color: #94a9ff;
+}
+.submenu {
+  height: 0; /*ul의 높이를 안보이게 처리*/
+  overflow: hidden;
+}
+.pagination {
+	    justify-content: center;
+	    align-items: center;
+	    margin: 20px 0;
+	}
+	.pagination button {
+	    background-color: #f8f9fa;
+	    border: 1px solid #dee2e6;
+	    color: #007bff;
+	    padding: 8px 12px;
+	    margin: 0 2px;
+	    cursor: pointer;
+	    transition: background-color 0.3s, color 0.3s;
+	    border-radius: 4px;
+	}
+
+	.pagination button:hover {
+	    background-color: #007bff;
+	    color: white;
+	}
+
+	.pagination button.active {
+	    background-color: #007bff;
+	    color: white;
+	    cursor: default;
+	}
+
+	.pagination button:disabled {
+	    background-color: #e9ecef;
+	    color: #6c757d;
+	    cursor: not-allowed;
+	    border: 1px solid #dee2e6;
+	}
+
+	.pagination button:not(.active):not(:disabled):hover {
+	    background-color: #0056b3;
+	    color: white;
+	}	.pagination {
+		    justify-content: center;
+		    align-items: center;
+		    margin: 20px 0;
+		}
+		.pagination button {
+		    background-color: #f8f9fa;
+		    border: 1px solid #dee2e6;
+		    color: #007bff;
+		    padding: 8px 12px;
+		    margin: 0 2px;
+		    cursor: pointer;
+		    transition: background-color 0.3s, color 0.3s;
+		    border-radius: 4px;
+		}
+
+		.pagination button:hover {
+		    background-color: #007bff;
+		    color: white;
+		}
+
+		.pagination button.active {
+		    background-color: #007bff;
+		    color: white;
+		    cursor: default;
+		}
+
+		.pagination button:disabled {
+		    background-color: #e9ecef;
+		    color: #6c757d;
+		    cursor: not-allowed;
+		    border: 1px solid #dee2e6;
+		}
+
+		.pagination button:not(.active):not(:disabled):hover {
+		    background-color: #0056b3;
+		    color: white;
+		}
