@@ -45,6 +45,12 @@ public class UserController {
         return "/user-list";
     }
 	
+	@RequestMapping("/addrLinkUrl.do") 
+    public String addrLinkUrl(Model model) throws Exception{
+
+        return "/jusoPopup";
+    }
+	
 	@RequestMapping("/user-view.do") 
     public String userView(HttpServletRequest request, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 
@@ -56,6 +62,16 @@ public class UserController {
 	@RequestMapping(value = "/idCheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String idCheck(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap 
+			= new HashMap<String, Object>();
+		resultMap = userService.searchUserInfo(map);
+		
+		return new Gson().toJson(resultMap);
+	}
+	
+	@RequestMapping(value = "/addrLink.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String juso(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap 
 			= new HashMap<String, Object>();
 		resultMap = userService.searchUserInfo(map);

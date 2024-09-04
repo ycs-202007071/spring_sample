@@ -18,7 +18,10 @@
 		<select v-model="gu" @change="fnArea()">
 			<option value ="gu" >::선택::</option>
 			<option v-for="item in guList" :value="item.gu">{{item.gu}}</option>
-			
+		</select>
+		<select v-model="dong" @change="fnArea()">
+			<option value ="dong" >::선택::</option>
+			<option v-for="item in dongList" :value="item.dong">{{item.dong}}</option>
 		</select>
 	</div>
 </body>
@@ -30,7 +33,8 @@
 				si : "",
 				siList : [],
 				gu : "",
-				guList : []
+				guList : [],
+				dongList : []
             };
         },
         methods: {
@@ -39,7 +43,10 @@
 				if(self.si == ""){
 					self.guList = [];
 				}
-				var nparam = {si : self.si};
+				var nparam = {
+					si : self.si,
+					gu : self.gu
+				};
 				$.ajax({
 					url:"area-list.dox",
 					dataType:"json",	
@@ -49,8 +56,10 @@
 						console.log(self.si);
 						if (self.si=="") {
 							self.siList = data.list;
-						} else {
+						} else if (self.gu=="") {
 							self.guList = data.list;
+						} else {
+							self.dongList = data.list;
 						}
 						
 					}

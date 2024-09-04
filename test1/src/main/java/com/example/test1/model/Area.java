@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Area {
-	private String si;
-	private String gu;
-	private String dong;
+	public String si;
+	public String gu;
+	public String dong;
 }
